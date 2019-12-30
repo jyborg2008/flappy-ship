@@ -231,6 +231,28 @@ b b b b b b b b b b b b b b b b
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile9, function (sprite, location) {
     game.over(true)
 })
+function gn () {
+    let speed = 0
+    let gun: Sprite = null
+    projectile = sprites.createProjectileFromSprite(img`
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . . . . . . . . . 
+`, gun, speed * Math.cos(57.3), speed * Math.sin(57.3))
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     MC.setVelocity(30, -65)
     pause(250)
@@ -245,6 +267,7 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     game.over(false)
 })
+let projectile: Sprite = null
 let MC: Sprite = null
 MC = sprites.create(img`
 . . . . . . . . . . . . . . . . . . 
