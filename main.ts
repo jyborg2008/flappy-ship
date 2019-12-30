@@ -157,18 +157,18 @@ namespace myTiles {
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . 
-. 7 7 7 f f f f f f f f 7 7 b . 
-. 7 7 7 7 7 7 7 7 7 7 7 7 7 b . 
-. 7 7 7 7 7 7 7 7 7 7 7 7 b b . 
-. . 7 7 7 7 7 7 7 7 7 7 7 b . . 
-. . 7 7 7 7 7 7 7 7 7 7 b b . . 
-. . 7 7 7 7 7 7 7 7 7 b b b . . 
-. . . 7 7 7 7 7 7 7 7 b b . . . 
-. . . . 7 7 7 7 7 7 7 b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
-. . . . 7 7 7 7 7 7 b b . . . . 
+. . . . . . . . . . . . . . . . 
+. . . . . . . . b c c c . . . . 
+. . . . . . 4 c 6 6 c c . . . . 
+. . . . . . c . b c c c . . . . 
+. . . . 4 . c 4 6 6 c c . . . . 
+. . . . c . . c b c c c . . . . 
+. . . . b 6 6 6 6 6 c 4 . . . . 
+. . . . b b b b b c c . . . . . 
+. . . . b b b b b c c . . . . . 
+. . . . b 6 6 6 6 6 c . . . . . 
+. . . . b b b b b c c 4 . . . . 
+. . . . b 6 6 6 6 6 c c . . . . 
 `
     //% blockIdentity=images._tile
     export const tile9 = img`
@@ -194,7 +194,9 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile9, function (sprite, location
     game.over(true)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-	
+    MC.setVelocity(30, -65)
+    pause(250)
+    MC.setVelocity(50, 50)
 })
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile8, function (sprite, location) {
     game.over(false)
@@ -205,7 +207,8 @@ scene.onOverlapTile(SpriteKind.Player, myTiles.tile7, function (sprite, location
 scene.onOverlapTile(SpriteKind.Player, myTiles.tile2, function (sprite, location) {
     game.over(false)
 })
-let MC = sprites.create(img`
+let MC: Sprite = null
+MC = sprites.create(img`
 . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . 
 . . . . . . . . . . . . . . . . . . 
